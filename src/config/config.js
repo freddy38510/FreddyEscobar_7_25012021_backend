@@ -11,6 +11,9 @@ const envVarsSchema = Joi.object()
     HOST: Joi.string().default('localhost'),
     DATABASE_URL: Joi.string().required().description('Postgres database url'),
     JWT_SECRET: Joi.string().required().description('JWT secret key'),
+    JWT_BLACKLIST_DAY_SIZE: Joi.number().default(10000),
+    JWT_BLACKLIST_ERROR_RATE: Joi.number().min(0).max(1).default(0.001),
+    JWT_BLACKLIST_STORE: Joi.string().valid('memory', 'redis').default('memory'),
   })
   .unknown();
 
@@ -26,5 +29,13 @@ module.exports = {
   host: envVars.HOST,
   database: {
     url: envVars.DATABASE_URL,
+  },
+  jwt: {
+    secret: envVars.JWT_SECRET,
+    blacklist: {
+      daySize: envVars.JWT_BLACKLIST_DAY_SIZE,
+      errorRate: envVars.JWT_BLACKLIST_ERROR_RATE,
+      storeType: envVars.NODE_ENV === 'development' ? 'memory' : envVars.JWT_BLACKLIST_STORE,
+    },
   },
 };
