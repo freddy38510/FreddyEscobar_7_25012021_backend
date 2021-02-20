@@ -13,13 +13,13 @@ yarn
 - For production database
 
 ```bash
-yarn knex:prod
+yarn knex:prod migrate:latest
 ```
 
 - For development database
 
 ```bash
-yarn knex:dev
+yarn knex:dev migrate:latest
 ```
 
 ### Start the server in development mode (hot-code reloading, error reporting, etc.)
