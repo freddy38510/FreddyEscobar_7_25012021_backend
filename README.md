@@ -1,5 +1,7 @@
 # Groupomania Backend
 
+> Groupomania social network
+
 ## Install the dependencies
 
 ```bash
