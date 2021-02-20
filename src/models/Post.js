@@ -8,7 +8,6 @@ const Joi = require('joi');
 const policies = require('../policies');
 const knex = require('../database/knex');
 const JoiValidator = require('./validations/JoiValidator');
-const { postService } = require('../services');
 
 Model.knex(knex);
 
@@ -29,10 +28,6 @@ class Post extends mixin(Model, [
 
   static get timestamp() {
     return true;
-  }
-
-  static get service() {
-    return postService;
   }
 
   static createValidator() {
