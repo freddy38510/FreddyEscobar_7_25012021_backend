@@ -92,8 +92,7 @@ class User extends mixin(Model, [
       .authorize(this)
       .withGraphJoined('[author(selectUsername)]')
       .modify('paging', page, pageSize)
-      .orderBy('created_at', 'desc')
-      .debug(true);
+      .orderBy('created_at', 'desc');
   }
 }
 

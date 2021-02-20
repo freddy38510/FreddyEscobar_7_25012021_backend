@@ -63,8 +63,7 @@ const getPostBySlug = async (slug) => Post
   .findOne({ slug })
   .throwIfNotFound()
   .select('posts.*', Post.relatedQuery('comments').count().as('commentsCount'))
-  .withGraphJoined('[author(selectUsername)]')
-  .debug(true);
+  .withGraphJoined('[author(selectUsername)]');
 
 /**
  * Update post by id

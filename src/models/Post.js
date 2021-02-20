@@ -101,8 +101,7 @@ class Post extends mixin(Model, [
       .authorize(user)
       .withGraphJoined('[author(selectUsername)]')
       .modify('paging', page, pageSize)
-      .orderBy('created_at', 'desc')
-      .debug(true);
+      .orderBy('created_at', 'desc');
   }
 
   async insertComment(user, commentData) {
